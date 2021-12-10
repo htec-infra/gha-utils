@@ -26,4 +26,4 @@ runs:
           echo "${{ env.REPO_SUMMARY }}"
           const { GITHUB_ACTION_PATH } = process.env
           const script = require(`${GITHUB_ACTION_PATH}/../../scripts/comment_pr.js`)
-          await script({github, context, REPO_SUMMARY})
+          await script({github, context})
