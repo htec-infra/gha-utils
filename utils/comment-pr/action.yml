@@ -25,4 +25,4 @@ runs:
         script: |
           const { GITHUB_ACTION_PATH, PR_MSG } = process.env
           const script = require(`${GITHUB_ACTION_PATH}/../../scripts/comment_pr.js`)
-          await script({github, context, PR_MSG})
+          await script({github, context, "hello there"})
