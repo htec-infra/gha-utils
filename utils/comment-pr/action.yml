@@ -5,6 +5,9 @@ inputs:
   token:
     description: 'Github access token'
     required: true
+  repo_summary:
+    description: 'Repo summary'
+    required: false
 
 
 runs:
@@ -21,3 +24,5 @@ runs:
           const { GITHUB_ACTION_PATH } = process.env
           const script = require(`${GITHUB_ACTION_PATH}/../../scripts/comment_pr.js`)
           await script({github, context})
+        env:
+          REPO_SUMMARY: $ {{ inputs.repo_summary || steps.repo_data.outputs.REPO_SUMMARY }}
