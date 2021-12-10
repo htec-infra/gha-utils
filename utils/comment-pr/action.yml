@@ -19,12 +19,11 @@ runs:
     - name: Comment PR
       uses: actions/github-script@v5
       env:
-        # REPO_SUMMARY: ${{ inputs.repo_summary || steps.repo_data.outputs.REPO_SUMMARY }}
-        REPO_SUMMARY: "test"
+        REPO_SUMMARY: ${{ inputs.repo_summary || steps.repo_data.outputs.REPO_SUMMARY }}
       with:
         github-token: ${{ inputs.token }}
-        REPO_SUMMARY: ${{ inputs.repo_summary || steps.repo_data.outputs.REPO_SUMMARY }}
         script: |
+          echo "${{ REPO_SUMMARY }}"
           const { GITHUB_ACTION_PATH } = process.env
           const script = require(`${GITHUB_ACTION_PATH}/../../scripts/comment_pr.js`)
-          await script({github, context})
+          await script({github, context, REPO_SUMMARY})
