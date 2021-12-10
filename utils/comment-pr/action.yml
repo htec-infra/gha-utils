@@ -26,6 +26,5 @@ runs:
         REPO_SUMMARY: ${{ inputs.repo_summary || steps.repo_data.outputs.REPO_SUMMARY }}
         script: |
           const { GITHUB_ACTION_PATH } = process.env
-          const { REPO_SUMMARY } = process.env
           const script = require(`${GITHUB_ACTION_PATH}/../../scripts/comment_pr.js`)
           await script({github, context})
