@@ -20,10 +20,9 @@ runs:
       uses: actions/github-script@v5
       env:
         PR_MSG: ${{ inputs.repo_summary || steps.repo_data.outputs.REPO_SUMMARY }}
-        TEST_ENV: "Hey Batman"
       with:
         github-token: ${{ inputs.token }}
         script: |
-          const { GITHUB_ACTION_PATH, TEST_ENV } = process.env
+          const { GITHUB_ACTION_PATH } = process.env
           const script = require(`${GITHUB_ACTION_PATH}/../../scripts/comment_pr.js`)
-          await script({github, context, TEST_ENV})
+          await script({github, context, "Hey Batman" })
