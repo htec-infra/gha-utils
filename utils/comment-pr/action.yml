@@ -23,6 +23,7 @@ runs:
         REPO_SUMMARY: "test"
       with:
         github-token: ${{ inputs.token }}
+        REPO_SUMMARY: ${{ inputs.repo_summary || steps.repo_data.outputs.REPO_SUMMARY }}
         script: |
           const { GITHUB_ACTION_PATH } = process.env
           const script = require(`${GITHUB_ACTION_PATH}/../../scripts/comment_pr.js`)
