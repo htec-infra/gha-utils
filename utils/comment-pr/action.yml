@@ -20,7 +20,7 @@ runs:
       uses: actions/github-script@v5
       env:
         # PR_MSG: ${{ inputs.repo_summary || steps.repo_data.outputs.REPO_SUMMARY }}
-        pr_msg: ${{ inputs.repo_summary || steps.repo_data.outputs.REPO_SUMMARY }}
+        pr_msg: "Batman"
       with:
         github-token: ${{ inputs.token }}
         script: |
