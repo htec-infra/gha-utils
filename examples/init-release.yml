@@ -1,0 +1,16 @@
+name: Init release
+
+on:
+  # Triggers the workflow on push or pull request events but only for the main/master branch
+  push:
+    branches: [ main, master ]
+
+jobs:
+  init-release:
+    name: Bump app version
+    runs-on: ubuntu-latest
+    steps:
+      - id: init-release
+        uses: htec-infra/gha-utils/utils/init-release@VERSION
+        with:
+          release_type: "minor"

@@ -1,0 +1,17 @@
+name: Init release
+
+on:
+  # Triggers the workflow on push or pull request events but only for the main/master branch
+  push:
+    branches: [ main, master ]
+
+jobs:
+  gh-release:
+    name: Bump app version
+    runs-on: ubuntu-latest
+    steps:
+      - id: gh-release
+        uses: htec-infra/gha-utils/utils/gh-release@VERSION
+        with:
+          app_version: "alpha" # optional
+          app_revision: "rc-1" # optional
