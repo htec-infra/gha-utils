@@ -1,16 +1,26 @@
-name: Init release
+name: Initialize App Release
 
 on:
-  # Triggers the workflow on push or pull request events but only for the main/master branch
-  push:
-    branches: [ main, master ]
+  workflow_dispatch:
+    inputs:
+      release_type:
+        type: choice
+        description: Release Type
+        options: [ patch, minor, major ]   
 
 jobs:
-  init-release:
-    name: Bump app version
+  run:
+    name: Initialization
     runs-on: ubuntu-latest
     steps:
-      - id: init-release
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+          # Use PAT token with workflow permissions enabled
+          token: ${{ secrets.CI_PAT }}
+      - name: Prepare App for Release
+        id: artifact
         uses: htec-infra/gha-utils/utils/init-release@VERSION
         with:
-          release_type: "minor"
+          release_type: ${{ github.event.inputs.release_type }}
