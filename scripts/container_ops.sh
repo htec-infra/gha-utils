@@ -95,7 +95,7 @@ PUSH_TO_REGISTRY=${1:-"false"}
 # TODO(improve logic for finding app.conf): Currently we have locked config location in infra/app.conf, we need to expand this feature
 # in order if someone wants to build something in folder_name/ and it has different registry from infra/app.conf.
 APP_CONFIG_FILE="${GITHUB_WORKSPACE}/infra/app.conf"
-CONTAINER_DIR="infra/"
+CONTAINER_DIR="${2:-infra/}"
 CONTAINER_REPO="localreg"
 
 main(){
