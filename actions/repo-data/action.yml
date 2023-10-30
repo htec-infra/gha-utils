@@ -23,9 +23,9 @@ outputs:
   app_release_type:
     description: "Application release type"
     value: ${{ steps.repo_data.outputs.APP_RELEASE_TYPE }}
-  docker_repo:
+  container_repo:
     description: "Docker repository"
-    value: ${{ steps.repo_data.outputs.DOCKER_REPO }}
+    value: ${{ steps.repo_data.outputs.CONTAINER_REPO }}
   branch_ref:
     description: "Branch reference"
     value: ${{ steps.repo_data.outputs.GITHUB_REF }}
