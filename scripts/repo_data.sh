@@ -28,7 +28,7 @@ resolve_app_version() {
             set_var APP_VERSION "${GITHUB_HEAD_REF##release/}-rc.${GITHUB_RUN_NUMBER}"
         fi
     else
-      if [[ -z "${GITHUB_REF##*main}" ]] || [[ -z "${GITHUB_REF##*master}" ]] || [[ -z "${GITHUB_REF##*dev*}" ]]; then
+      if [[ -z "${GITHUB_REF##*main}" ]] || [[ -z "${GITHUB_REF##*master}" ]]; then
         set_var APP_RELEASE_TYPE "Alpha (Debug)"
         set_var APP_VERSION "alpha-${GITHUB_SHA::7}"
       fi
@@ -81,8 +81,9 @@ END
 }
 
 # app.conf should have specific key-value pair for example:
-# CONTAINER_REPO=hub.docker.com
-APP_CONFIG_FILE="${GITHUB_WORKSPACE}/infra/app.conf"
+# CONTAINER_REPO=hub.docker.
+CONTAINER_DIR="${2:-infra/}"
+APP_CONFIG_FILE="${GITHUB_WORKSPACE}/${CONTAINER_DIR}app.conf"
 if [[ -f "${APP_CONFIG_FILE}" ]]; then
     echo "Application Config detected! Loading parameters..."
     # shellcheck source=${GITHUB_WORKSPACE}/infra/app.conf

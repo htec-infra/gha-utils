@@ -1,6 +1,12 @@
 name: 'Repository data'
 description: 'Fetch repository and organization name'
 
+inputs:
+  container_dir:
+    description: "Container config directory"
+    required: false
+    default: "infra/"
+
 outputs:
   repo_name:
     description: "Repository name"
@@ -35,4 +41,4 @@ runs:
   steps:
     - id: repo_data
       shell: bash
-      run: ${{ github.action_path }}/../../scripts/repo_data.sh
+      run: ${{ github.action_path }}/../../scripts/repo_data.sh "${{ inputs.container_dir }}"
