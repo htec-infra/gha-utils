@@ -32,6 +32,10 @@ resolve_app_version() {
         set_var APP_RELEASE_TYPE "Alpha (Debug)"
         set_var APP_VERSION "alpha-${GITHUB_SHA::7}"
       fi
+      if [[ -z "${GITHUB_REF##*hotfix}" ]] || [[ -z "${GITHUB_REF##*hf}" ]]; then
+        set_var APP_RELEASE_TYPE "Hotfix"
+        set_var APP_VERSION "hf-${GITHUB_SHA::7}"
+      fi
       if [[ -z "${GITHUB_REF##*/release/*}" ]]; then
         set_var APP_RELEASE_TYPE "Beta (Pre-release)"
         set_var APP_VERSION "${GITHUB_REF##refs/heads/release/}-rc.${GITHUB_RUN_NUMBER}"
