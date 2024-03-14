@@ -6,7 +6,10 @@ inputs:
     description: 'Whether to push image to Docker Registry or not?'
     required: true
     default: 'false'
-
+  container_dir:
+    description: 'Container directory'
+    required: false
+    default: 'infra/'
 
 runs:
   using: "composite"
@@ -15,5 +18,6 @@ runs:
       run: |
         echo "::group::Container Operations"
           ${{ github.action_path }}/../../scripts/container_ops.sh \
-             "${{ inputs.push_image }}"
+             "${{ inputs.push_image }}" \
+             "${{ inputs.container_dir }}"
         echo "::endgroup::"
