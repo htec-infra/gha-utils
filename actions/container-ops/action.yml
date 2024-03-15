@@ -10,6 +10,10 @@ inputs:
     description: 'Container directory'
     required: false
     default: 'infra/'
+  build_context:
+    description: 'Image build context'
+    required: false
+    default: .
 
 runs:
   using: "composite"
@@ -19,5 +23,6 @@ runs:
         echo "::group::Container Operations"
           ${{ github.action_path }}/../../scripts/container_ops.sh \
              "${{ inputs.push_image }}" \
-             "${{ inputs.container_dir }}"
+             "${{ inputs.container_dir }}" \
+             "${{ inputs.build_context }}"
         echo "::endgroup::"
