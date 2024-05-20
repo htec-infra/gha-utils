@@ -13,7 +13,7 @@ inputs:
   build_context:
     description: 'Image build context'
     required: false
-    default: .
+    default: '.'
 
 runs:
   using: "composite"
