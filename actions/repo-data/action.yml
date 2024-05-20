@@ -1,6 +1,12 @@
 name: 'Repository data'
 description: 'Fetch repository and organization name'
 
+inputs:
+  container_dir:
+    description: "Container config directory"
+    required: false
+    default: "infra/"
+
 outputs:
   repo_name:
     description: "Repository name"
@@ -17,9 +23,9 @@ outputs:
   app_release_type:
     description: "Application release type"
     value: ${{ steps.repo_data.outputs.APP_RELEASE_TYPE }}
-  docker_repo:
+  container_repo:
     description: "Docker repository"
-    value: ${{ steps.repo_data.outputs.DOCKER_REPO }}
+    value: ${{ steps.repo_data.outputs.CONTAINER_REPO }}
   branch_ref:
     description: "Branch reference"
     value: ${{ steps.repo_data.outputs.GITHUB_REF }}
@@ -35,4 +41,4 @@ runs:
   steps:
     - id: repo_data
       shell: bash
-      run: ${{ github.action_path }}/../../scripts/repo_data.sh
+      run: ${{ github.action_path }}/../../scripts/repo_data.sh "${{ inputs.container_dir }}"

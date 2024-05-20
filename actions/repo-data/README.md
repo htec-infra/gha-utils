@@ -11,6 +11,13 @@ This workflow is generating 8 oputputs:
 - branch_ref
 - head_branch_ref
 
+The `container_dir` option is used for monorepos. For example:
+
+    container_dir_1/app.conf
+    container_dir_2/app.conf
+
+Each app has its own container registry, enabling monorepo support.
+
 Example output:
 
 Repository name: reponame

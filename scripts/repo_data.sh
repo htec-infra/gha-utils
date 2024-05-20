@@ -86,7 +86,8 @@ END
 
 # app.conf should have specific key-value pair for example:
 # CONTAINER_REPO=hub.docker.com
-APP_CONFIG_FILE="${GITHUB_WORKSPACE}/infra/app.conf"
+CONTAINER_DIR="${1:-infra/}"
+APP_CONFIG_FILE="${GITHUB_WORKSPACE}/${CONTAINER_DIR}app.conf"
 if [[ -f "${APP_CONFIG_FILE}" ]]; then
     echo "Application Config detected! Loading parameters..."
     # shellcheck source=${GITHUB_WORKSPACE}/infra/app.conf
