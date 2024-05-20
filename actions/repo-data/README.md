@@ -18,12 +18,6 @@ The `container_dir` option is used for monorepos. For example:
 
 Each app has its own container registry, enabling monorepo support.
 
-inputs:
-  container_dir:
-    description: "Container config directory"
-    required: false
-    default: "infra/"
-
 Example output:
 
 Repository name: reponame
