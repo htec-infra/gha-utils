@@ -21,7 +21,7 @@ login() {
 build() {
   local CONTAINER_IMG_TAG="$1"
   local DOCKER_FILE="${2:-Dockerfile}"
-  local BUILD_CONTEXT=$3
+  local BUILD_CONTEXT="${3:-.}"
   DOCKER_BUILDKIT=1 docker build --progress=plain \
     --build-arg VERSION="${APP_VERSION}" --build-arg REVISION="${APP_REVISION}" \
     -t "${CONTAINER_IMG_TAG}" \
