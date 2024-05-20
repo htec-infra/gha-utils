@@ -1,5 +1,11 @@
-name: 'Repository data'
-description: 'Fetch repository and organization name'
+name: "Repository data"
+description: "Fetch repository and organization name"
+
+inputs:
+  app_config_file:
+    description: "App config file loaction"
+    required: false
+    default: "${GITHUB_WORKSPACE}/infra/app.conf"
 
 outputs:
   repo_name:
@@ -35,4 +41,6 @@ runs:
   steps:
     - id: repo_data
       shell: bash
-      run: ${{ github.action_path }}/../../scripts/repo_data.sh
+      run: |
+        ${{ github.action_path }}/../../scripts/repo_data.sh \
+            "${{ inputs.app_config_file }}"
