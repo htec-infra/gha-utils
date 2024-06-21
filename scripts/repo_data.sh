@@ -38,7 +38,7 @@ resolve_app_version() {
       fi
       if [[ -z "${GITHUB_REF##*/qa/*}" ]]; then
         set_var APP_RELEASE_TYPE "QA"
-        set_var APP_VERSION "${GITHUB_REF##refs/heads/release/}-qa.${GITHUB_RUN_NUMBER}"
+        set_var APP_VERSION "${GITHUB_REF##refs/heads/qa/}-qa.${GITHUB_RUN_NUMBER}"
       fi
       if [[ -z "${GITHUB_REF##*/release/*}" ]]; then
         set_var APP_RELEASE_TYPE "Beta (Pre-release)"
